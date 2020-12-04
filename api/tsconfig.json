@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "rootDir": "../",
+    "target": "es2018",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": [
+      "dom",
+      "es2018"
+    ],
+    "sourceMap": true,
+    "noEmitOnError": false,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "declaration": false,
+    "esModuleInterop": true
+  }
+}
