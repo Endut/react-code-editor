@@ -19,12 +19,6 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
-    alias: {
-      leaflet_css: __dirname + "/node_modules/leaflet/dist/leaflet.css",
-      leaflet_marker: __dirname + "/node_modules/leaflet/dist/images/marker-icon.png",
-      // leaflet_marker_2x: __dirname + "/node_modules/leaflet/dist/images/marker-icon-2x.png",
-      // leaflet_marker_shadow: __dirname + "/node_modules/leaflet/dist/images/marker-shadow.png"
-    }
   },
   devServer: {
     contentBase: "./dist",
