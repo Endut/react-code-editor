@@ -1,10 +1,5 @@
 import React, { FC } from 'react';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import styled from 'styled-components';
-
-// const HiddenInput = styled.input`
-//   display: none;
-// `
 
 const { Item } = NavDropdown;
 const { Brand, Toggle, Collapse } = Navbar;

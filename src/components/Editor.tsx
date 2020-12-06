@@ -8,23 +8,23 @@ import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/snippets/python";
 
 
-import { Document, Documents } from './types';
+import { Document, Documents } from '../types';
 
 const Editor: FC<{
-  document: Document,
+  document?: Document,
   setDocument: (doc: Document) => void,
   onSave: () => void
 }> = ({
   document, setDocument, onSave
 }) => {
 
-  const { path, content } = document;
+  const { path, content } = document || { path: 'untitled', content: '' };
 
   return (
     <AceEditor
       mode="python"
       theme="github"
-      onChange={doc => setDocument({ path, content: doc })}
+      onChange={doc => document && setDocument({ path, content: doc })}
       style={{
         width: '100%',
         height: 'calc(100vh - 8rem)',
@@ -37,13 +37,13 @@ const Editor: FC<{
         showLineNumbers: true,
         tabSize: 2,
       }}
-      value={content || ''}
+      value={document?.content || ''}
       commands={[{
         name: 'save',
         bindKey: { win: 'Ctrl-S', mac: 'Command-S' },
         exec: editor => {
           const doc = editor.getValue();
-          setDocument({ path, content: doc });
+          document && setDocument({ path: document.path, content: doc });
           onSave()
         }
       }]}     

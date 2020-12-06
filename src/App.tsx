@@ -4,13 +4,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap';
 
 import { Document, Documents } from './types';
-import { useDocuments } from './hooks';
+import { useDocuments } from './useDocuments';
 import localStorage from './localStorage';
 
-import Editor from './Editor';
-import Footer from './Footer';
-import Header from './Header';
-import Dropzone from './Dropzone';
+import Editor from './components/Editor';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Dropzone from './components/Dropzone';
 
 
 const getDocumentTitle = (path: string) => {

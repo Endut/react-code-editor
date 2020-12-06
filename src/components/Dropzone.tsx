@@ -1,7 +1,7 @@
 import React, { FC, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { getFileContent } from './utils';
-import { Document } from './types';
+import { getFileContent } from '../utils';
+import { Document } from '../types';
 
 interface DZFile extends File { path: string };
 
