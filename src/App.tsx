@@ -13,8 +13,6 @@ import Header from './components/Header';
 import Dropzone from './components/Dropzone';
 
 
-
-console.log(process.env.API_URL);
 const getDocumentTitle = (path: string) => {
   if (!path) {
     return 'untitled document'
