@@ -9,7 +9,7 @@
     "serve": "webpack-dev-server --mode=development --hot -w",
     "postinstall": "npm run install:api",
     "install:api": "cd api && npm install",
-    "dev:api": "cd api && npm run dev",
+    "dev:api": "cd api && API_PORT=8081 npm run dev",
     "test": "jest"
   },
   "jest": {
@@ -22,11 +22,10 @@
       "tsx",
       "js",
       "jsx",
-      "json",
-      "node"
+      "json"
     ],
     "moduleNameMapper": {
-      "\\.(css|less)$": "identity-obj-proxy"
+      "\\.(css|sass|less)$": "identity-obj-proxy"
     },
     "setupFilesAfterEnv": [
       "<rootDir>/setupTests.ts",

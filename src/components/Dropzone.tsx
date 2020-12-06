@@ -8,15 +8,14 @@ interface DZFile extends File { path: string };
 const Dropzone: FC<{
   onFileDrop: (files: Document[]) => void
 }> = ({ onFileDrop, children }) => {
-  const onDropAccepted = useCallback(
-  async (acceptedFiles: File[]) => {
+  const onDropAccepted = useCallback(async (acceptedFiles: File[]) => {
     const files = await Promise.all(acceptedFiles.map(async file => {
       const content = await getFileContent(file) || "";
       return { path: (file as DZFile).path, content }
     }));
 
     onFileDrop(files);
-  }, [ onFileDrop ]);
+  }, []);
   
   const { getRootProps } = useDropzone({
     onDropAccepted,

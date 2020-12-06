@@ -8,7 +8,6 @@ const path = require('path');
 const Dotenv = require('dotenv-webpack');
 const PORT = parseInt(process.env.CLIENT_PORT) || 8080;
 
-
 module.exports = {
   entry: {
     index: [path.resolve(__dirname, 'src/index')],
@@ -44,13 +43,6 @@ module.exports = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: "ts-loader",
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
       },
       {
         test: /\.css$/,
