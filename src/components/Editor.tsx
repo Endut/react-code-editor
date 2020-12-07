@@ -12,22 +12,22 @@ import { Document, Documents } from '../types';
 
 const Editor: FC<{
   document?: Document,
-  setDocument: (doc: Document) => void,
+  updateDocument: (doc: Document) => void,
   onSave: () => void
 }> = ({
-  document, setDocument, onSave
+  document, updateDocument, onSave
 }) => {
 
-  const { path, content } = document || { path: 'untitled', content: '' };
+  const { path, content } = document  || { path: 'untitled', content: '' };
 
   return (
     <AceEditor
       mode="python"
       theme="github"
-      onChange={doc => document && setDocument({ path, content: doc })}
+      onChange={doc => document && updateDocument({ path, content: doc })}
       style={{
         width: '100%',
-        height: 'calc(100vh - 8rem)',
+        height: 'calc(100vh - 6rem)',
         borderRadius: '0.5rem',
       }}
       setOptions={{
@@ -37,13 +37,13 @@ const Editor: FC<{
         showLineNumbers: true,
         tabSize: 2,
       }}
-      value={document?.content || ''}
+      value={content}
       commands={[{
         name: 'save',
         bindKey: { win: 'Ctrl-S', mac: 'Command-S' },
         exec: editor => {
           const doc = editor.getValue();
-          document && setDocument({ path: document.path, content: doc });
+          document && updateDocument({ path, content: doc });
           onSave()
         }
       }]}     

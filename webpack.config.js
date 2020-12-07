@@ -8,13 +8,17 @@ const path = require('path');
 const Dotenv = require('dotenv-webpack');
 const PORT = parseInt(process.env.CLIENT_PORT) || 8080;
 
+
+
 module.exports = {
   entry: {
     index: [path.resolve(__dirname, 'src/index')],
   },
   devtool: "inline-source-map",
   output: {
-    filename: "./dist/bundle.js",
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+    filename: 'bundle.js'
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
@@ -23,6 +27,7 @@ module.exports = {
     contentBase: "./dist",
     hot: true,
     port: PORT,
+    historyApiFallback: true,
   },
   module: {
     rules: [

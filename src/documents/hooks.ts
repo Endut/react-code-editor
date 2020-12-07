@@ -1,6 +1,6 @@
-import { useState } from "react";
-
-import { Document, Documents } from './types';
+import React from 'react';
+import { useContext, useState } from 'react';
+import { Document, Documents, DocumentsApi } from './types';
 
 type Reducer<T> = (state: T) => T;
 
@@ -31,18 +31,33 @@ const addDocumentsReducer = (addedDocs: Document[]): Reducer<Documents> => {
   }
 }
 
-export const useDocuments = (initialState: Documents) => {
-  const [ documents, setDocuments ] = useState<Documents>(initialState);
+export const DocumentsContext = React.createContext<DocumentsApi | undefined>(
+  undefined
+);
+
+export const useDocumentsContext = () => {
+  const context = useContext(DocumentsContext);
+  if (!context) {
+    throw new Error(
+      "useDocumentContext must be used within a DocumentsProvider"
+    );
+  }
+
+  return context;
+};
+
+
+export const useDocuments = (initialState?: Documents): DocumentsApi => {
+  const [ documents, setDocuments ] = useState<Documents>(initialState || {});
 
   const addDocuments = (addedDocs: Document[]) => setDocuments(addDocumentsReducer(addedDocs));
-  const setDocument = (document: Document) => setDocuments(updateDocumentReducer(document));
+  const updateDocument = (document: Document) => setDocuments(updateDocumentReducer(document));
   const deleteDocument = (path: string) => setDocuments(deleteDocumentReducer(path));
   const getDocument = (path: string) => documents[path];
-
   const getPaths = () => Object.keys(documents);
 
   return {
-    setDocument,
+    updateDocument,
     getDocument,
     getPaths,
     deleteDocument,
