@@ -23,7 +23,7 @@ const Editor: FC<{
       theme="github"
       style={{
         width: '100%',
-        height: withFooter ? `calc(100vh - 8rem)` : '100vh',
+        height: withFooter ? `calc(100vh - 8rem)` : 'calc(100vh - 4rem)',
         borderRadius: '0.5rem',
       }}
       setOptions={{
