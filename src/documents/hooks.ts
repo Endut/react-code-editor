@@ -11,7 +11,7 @@ const updateDocumentReducer = (document: Document): Reducer<Documents> => {
   })
 };
 
-const deleteDocumentReducer = (path: string): Reducer<Documents> => {
+const removeDocumentReducer = (path: string): Reducer<Documents> => {
   return (documents: Documents) => {
     const { [path]: toDelete, ...toKeep } = documents;
     return toKeep;
@@ -20,13 +20,13 @@ const deleteDocumentReducer = (path: string): Reducer<Documents> => {
 
 const addDocumentsReducer = (addedDocs: Document[]): Reducer<Documents> => {
   return (documents: Documents) => {
+
     const allDocs = addedDocs.reduce((docs, doc) => {
       return {
         ...docs,
         [doc.path]: doc
       }
     }, documents);
-
     return allDocs;
   }
 }
@@ -52,15 +52,16 @@ export const useDocuments = (initialState?: Documents): DocumentsApi => {
 
   const addDocuments = (addedDocs: Document[]) => setDocuments(addDocumentsReducer(addedDocs));
   const updateDocument = (document: Document) => setDocuments(updateDocumentReducer(document));
-  const deleteDocument = (path: string) => setDocuments(deleteDocumentReducer(path));
+  const removeDocument = (path: string) => setDocuments(removeDocumentReducer(path));
   const getDocument = (path: string) => documents[path];
   const getPaths = () => Object.keys(documents);
+
 
   return {
     updateDocument,
     getDocument,
     getPaths,
-    deleteDocument,
+    removeDocument,
     documents,
     addDocuments,
   }

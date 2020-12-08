@@ -12,7 +12,7 @@ export type DocumentsApi = {
   updateDocument: (document: Document) => void;
   getDocument: (path: string) => Document;
   getPaths: () => string[];
-  deleteDocument: (path: string) => void;
+  removeDocument: (path: string) => void;
   documents: Documents;
   addDocuments: (addedDocs: Document[]) => void;
 }; 

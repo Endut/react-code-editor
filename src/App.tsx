@@ -1,26 +1,30 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { Route, Router, Switch } from 'react-router-dom';
+import { Redirect, Route, Router, Switch } from 'react-router-dom';
 import { history } from './history';
 
-import Document from './pages/Document';
-import DocumentLandingPage from './pages/DocumentLandingPage';
 import { DocumentsProvider } from './documents';
+import DocumentLandingPage from './pages/DocumentLandingPage';
+import EditDocument from './pages/EditDocument';
+import CreateDocument from './pages/CreateDocument';
 
+const App: FC = () => {
 
-
-const App: FC = () => {  
   return (
     <DocumentsProvider>
       <Router history={history}>
         <Switch>
-          <Route exact path='/documents/new'>
-            <Document />
+          <Route path="/documents/edit">
+            <EditDocument />
           </Route>
-          <Route path='/documents'>
+          <Route exact path="/documents/new">
+            <CreateDocument />
+          </Route>
+          <Route exact path="/documents">
             <DocumentLandingPage />
           </Route>
+          <Redirect to='/documents' />
         </Switch>
       </Router>
     </DocumentsProvider>

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 
 import AceEditor from 'react-ace';
 import "ace-builds/src-noconflict/theme-github";
@@ -8,26 +8,22 @@ import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/snippets/python";
 
 
-import { Document, Documents } from '../types';
-
 const Editor: FC<{
-  document?: Document,
-  updateDocument: (doc: Document) => void,
-  onSave: () => void
-}> = ({
-  document, updateDocument, onSave
+  content: string,
+  onChange: (content: string) => void,
+  withFooter?: boolean,
+}> = React.memo(({
+  onChange,
+  content,
+  withFooter,
 }) => {
-
-  const { path, content } = document  || { path: 'untitled', content: '' };
-
   return (
     <AceEditor
       mode="python"
       theme="github"
-      onChange={doc => document && updateDocument({ path, content: doc })}
       style={{
         width: '100%',
-        height: 'calc(100vh - 6rem)',
+        height: withFooter ? `calc(100vh - 8rem)` : '100vh',
         borderRadius: '0.5rem',
       }}
       setOptions={{
@@ -38,17 +34,9 @@ const Editor: FC<{
         tabSize: 2,
       }}
       value={content}
-      commands={[{
-        name: 'save',
-        bindKey: { win: 'Ctrl-S', mac: 'Command-S' },
-        exec: editor => {
-          const doc = editor.getValue();
-          document && updateDocument({ path, content: doc });
-          onSave()
-        }
-      }]}     
+      onChange={(val, e) => onChange(val)}    
     />
   );
-};
+});
 
 export default Editor

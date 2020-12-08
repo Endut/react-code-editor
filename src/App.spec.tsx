@@ -6,7 +6,10 @@ import App from './App';
 describe('<App />', () => {
   it('renders without crashes', () => {
     render(<App />);
-    const header = screen.getByText(/py/i);
-    expect(header).toBeInTheDocument();
+    const newDocumentButton = screen.getByText(/new document/i);
+    expect(newDocumentButton).toBeInTheDocument();
+
+    const uploadFromDesktopButton = screen.getByText(/upload from desktop/i);
+    expect(uploadFromDesktopButton).toBeInTheDocument();
   });
 });

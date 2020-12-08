@@ -1,5 +1,5 @@
-import React, { FC, useContext, useState } from "react";
-import { Documents, DocumentsApi } from "./types";
+import React, { FC } from "react";
+import { Documents } from "./types";
 import { DocumentsContext, useDocuments } from "./hooks";
 
 export const DocumentsProvider: FC<{ initialState?: Documents }> = ({ initialState, children }) => {

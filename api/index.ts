@@ -16,6 +16,11 @@ app.get('/hi', (req, res) => {
 });
 
 
+app.put('/documents', (req, res) => {
+  console.log(req.body);
+  res.json({ modelInfo: 'really great model, thanks' })
+})
+
 httpServer.listen(port, () => {
   console.log(`http listening on localhost:${port}`);
 });
