@@ -12,4 +12,9 @@ describe('<App />', () => {
     const uploadFromDesktopButton = screen.getByText(/upload from desktop/i);
     expect(uploadFromDesktopButton).toBeInTheDocument();
   });
+
+});
+
+describe('landing on other pages', () => {
+
 });
