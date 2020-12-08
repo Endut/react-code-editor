@@ -15,7 +15,6 @@ import EditDocument from './EditDocument';
 const renderApp = (ui: React.ReactElement, initialDocumentState: Documents, route = '/') => {
   const history = createMemoryHistory()
   history.push(route);
-  console.log(route);
   return render(
     <DocumentsProvider initialState={initialDocumentState}>
       <Router history={history}>

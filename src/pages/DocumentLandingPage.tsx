@@ -26,10 +26,7 @@ const DocumentLandingPage: FC<{}> = () => {
             <ListGroup.Item key={path}>
               <DocumentListItem
                 path={path}
-                onClick={() => {
-                  console.log('history push', history);
-                  history.push(`/documents/edit?${qs.stringify({path})}`)
-                }}
+                onClick={() => history.push(`/documents/edit?${qs.stringify({path})}`)}
                 onRemove={() => removeDocument(path)}
               />
             </ListGroup.Item>
