@@ -21,6 +21,7 @@ const DocumentListItem: FC<{ path: string, onClick: () => void, onRemove: () => 
       <GreyButton
         variant="link"
         onClick={onRemove}
+        data-testid={`remove-${path}`}
       >
         remove
       </GreyButton>

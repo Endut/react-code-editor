@@ -8,7 +8,7 @@ const path = require('path');
 const Dotenv = require('dotenv-webpack');
 const PORT = parseInt(process.env.CLIENT_PORT) || 8080;
 
-
+process.env.API_URL = process.env.API_URL || "http://localhost:8081";
 
 module.exports = {
   entry: {

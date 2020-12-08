@@ -9,18 +9,19 @@ import Editor from '../components/Editor';
 import Footer from '../components/Footer';
 import { Header } from '../components/Header';
 import Dropzone from '../components/Dropzone';
-import { Redirect, useHistory, useLocation, useParams } from 'react-router-dom';
+import { Redirect, useHistory, useLocation } from 'react-router-dom';
 import { Document } from '../documents/types';
 import qs from 'qs';
 
 
-const EditDocument: FC<{document: Document}> = ({document}) => {
-
+const EditDocumentComponent: FC<Document> = ({
+  path, content,
+}) => {
   const history = useHistory();
   const { addDocuments } = useDocumentsContext();
-  const [ path, setPath ] = useState<string>(document.path)
-  const [ content, setContent ] = useState(document.content);
- 
+  const [_path, setPath] = useState(path);
+  const [_content, setContent] = useState(content);
+
   return (
     <Dropzone redirectOnDrop>
       <Container fluid>
@@ -30,13 +31,13 @@ const EditDocument: FC<{document: Document}> = ({document}) => {
             setPath(path);
           }}
           onSave={() => {
-            addDocuments([{ path, content }]);
-            history.push(`/documents/edit?${qs.stringify({path})}`);
+            addDocuments([{ path: _path, content: _content }]);
+            history.push(`/documents/edit?${qs.stringify({path: _path})}`);
           }}
         />
         <Editor
           content={content}
-          onChange={(content) => setContent(content)}
+          onChange={(editorContent) => setContent(editorContent)}
           withFooter
         />
         <Footer />
@@ -61,8 +62,8 @@ const PageWrapper: FC<{}> = () => {
   if (!document) {
     return <Redirect to="/documents" />
   }
-
-  return <EditDocument document={document}/>
+  
+  return <EditDocumentComponent {...document}/>
 }
 
 

@@ -11,15 +11,13 @@ const port = process.env.API_PORT ? parseInt(process.env.API_PORT) : 8081;
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/hi', (req, res) => {
-  res.json({msg: 'hi'})
+app.put('/documents', (req, res) => {
+  res.json({
+    info: "really great project, thanks.",
+    url: "https://github.com/Endut/react-code-editor/archive/main.zip",
+  });
 });
 
-
-app.put('/documents', (req, res) => {
-  console.log(req.body);
-  res.json({ modelInfo: 'really great model, thanks' })
-})
 
 httpServer.listen(port, () => {
   console.log(`http listening on localhost:${port}`);

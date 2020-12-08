@@ -45,12 +45,12 @@ const Dropzone: FC<{
       const content = await getFileContent(file) || "";
       return { path: stripLeadingSlash((file as DZFile).path), content }
     }));
-    
-    addDocuments(files);
 
+    addDocuments(files);
+    
     const [ firstDoc ] = files;
     if (redirectOnDrop) {
-      history.push(`/documents/edit?${qs.stringify({path: firstDoc.path})}`);
+      return history.push(`/documents/edit?${qs.stringify({path: firstDoc.path})}`);
     }
   
   }, [history]);
@@ -67,7 +67,10 @@ const Dropzone: FC<{
         open();
         e.stopPropagation();
       }) : children}
-      <input {...getInputProps()}/>
+      <input
+        {...getInputProps()}
+        aria-label="select a document"
+      />
     </DropzoneWrapper>
   );
 }

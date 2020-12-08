@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useContext, useState } from 'react';
 import { Document, Documents, DocumentsApi } from './types';
 
@@ -45,7 +45,6 @@ export const useDocumentsContext = () => {
 
   return context;
 };
-
 
 export const useDocuments = (initialState?: Documents): DocumentsApi => {
   const [ documents, setDocuments ] = useState<Documents>(initialState || {});

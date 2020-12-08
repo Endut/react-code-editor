@@ -10,9 +10,12 @@ import EditDocument from './pages/EditDocument';
 import CreateDocument from './pages/CreateDocument';
 
 const App: FC = () => {
+  // DocumentsProvider accepts an initialData parameter - useful here for 
+  // reading from local/sessionStorage, or fetching a project's state from the api
+  // on app mount
 
   return (
-    <DocumentsProvider>
+    <DocumentsProvider /* initialData={}*/>
       <Router history={history}>
         <Switch>
           <Route path="/documents/edit">
