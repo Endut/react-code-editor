@@ -32,3 +32,4 @@ together with session handling and authorization in the mini-api
 - I'd set up fetching initial project files from the server  
 - I'd extend the app by saving current state in sessionStorage or localStorage  
 - I'd write a few more extensive tests  
+- implement key-bindings for ctrl-n (new doc), ctrl-s (save), ctrl-o (open)
