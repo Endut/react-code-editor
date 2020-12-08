@@ -36,8 +36,10 @@ const EditDocumentComponent: FC<Document> = ({
           }}
         />
         <Editor
-          content={content}
-          onChange={(editorContent) => setContent(editorContent)}
+          content={_content}
+          onChange={(content) => {
+            setContent(content)
+          }}
           withFooter
         />
         <Footer />
