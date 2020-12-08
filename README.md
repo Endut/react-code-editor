@@ -9,13 +9,13 @@ copy `.env.default` to `.env` in the root directory and api directory
 
 in your browser go to `http://localhost:8080` and you should be redirected to the landing page
 
-`/documents`
+`/documents`  
 this page is very simple, you can upload new documents from your desktop, start a new document
 and display a list of currently loaded documents to navigate to
 
 if you have documents in memory, you can submit them all together as a 'project' to the api and get some info back
 
-`/documents/edit?path=<document path>`
+`/documents/edit?path=<document path>`  
 this takes you to the editor with a few UI options:
 - you can submit as before (using the button in the footer)  
 - you can edit the file's name by clicking on the name in the header  
